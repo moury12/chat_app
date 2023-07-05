@@ -26,12 +26,5 @@ class SettingsProvider{
       ){
     return firebaseFirestore.collection(collectionPath).doc(docPath).update(dataneededUpdate);
   }
-  Stream<QuerySnapshot>getStreamFireStore(String collectionPath, int limit, String? textSearch){
-    if(textSearch?.isNotEmpty==true){
-      return firebaseFirestore.collection(collectionPath).limit(limit).where(FireStoreConstants.nickname, isEqualTo: textSearch).snapshots();
-    }
-    else{
-      return firebaseFirestore.collection(collectionPath).limit(limit).snapshots();
-    }
-  }
+
 }

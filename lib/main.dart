@@ -1,5 +1,6 @@
 import 'package:chat_app/provides/AuthProvide.dart';
 import 'package:chat_app/provides/homeProvider.dart';
+import 'package:chat_app/provides/messageProvider.dart';
 import 'package:chat_app/provides/settingsProvider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -41,6 +42,10 @@ final FirebaseStorage firebaseStorage = FirebaseStorage.instance;
           ,),
         Provider<HomeProvider>(create: (context) => HomeProvider(
              firebaseFirestore: this.firebaseFirestore)
+          ,),
+        Provider<ChatProvider>(create: (context) => ChatProvider(
+            firebaseStorage: this.firebaseStorage,
+            firebaseFirestore: this.firebaseFirestore, preferences: this.prefs)
           ,),
       ],
       child: MaterialApp(
